@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Homework</title>
+	<meta charset="UTF-8">
+	<title>Homework</title>
 </head>
+
 <body>
-<!--
+	<!--
 Необязательное задание.
 
 Необходимо от пользователя получить число.
@@ -30,16 +32,22 @@
 
 	let userNumber = +prompt('Веведите целое положительное число');
 
-	let unit = userNumber % 10;
-	let ten = (userNumber - unit) / 10 % 10;
+	const unit = userNumber % 10;
+	/* let ten = (userNumber - unit) / 10 % 10;
 	let hundred = (userNumber - ten * 10 - unit) / 100 % 10;
-	const thousand = (userNumber - hundred * 100 - ten * 10 - unit) / 1000 % 10;
+	const thousand = (userNumber - hundred * 100 - ten * 10 - unit) / 1000 % 10; */
 
+	
+	const ten = Math.trunc(userNumber / 10) % 10;
+	const hundred = Math.trunc(userNumber / 100) % 10;
+	const thousand = Math.trunc(userNumber / 1000) % 10;
 
-	console.log(`В числе ${userNumber} количество тысяч: ${thousand}, сотен: ${hundred}, десяток: ${ten} и единиц: ${unit}`);
+	console.log(`В числе ${userNumber} количество тысяч: ${thousand}, \
+	сотен: ${hundred}, десяток: ${ten} и единиц: ${unit}`);
 
 
 
 </script>
 </body>
+
 </html>
