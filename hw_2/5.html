@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Homework</title>
+</head>
+
+<body>
+	<!--
+Обязательное задание.
+
+Необходимо скопировать и вставить в данный скрипт все функции из 4 задания.
+Необходимо реализовать функцию:
+mathOperation(arg1, arg2, operation);
+Параметры:
+arg1 - первое число.
+arg2 - второе число.
+operation - строка, которая содержит один символ из: "+", "-", "*", "/".
+Функция mathOperation должна вернуть результат операции, который был передан в
+параметр operation для двух первых аргументов (arg1 и arg2).
+Функция mathOperation должна использовать для вычисления функции из 4 задания.
+
+Примеры вызова функции:
+console.log(mathOperation(5, 3, "+")); // 8
+console.log(mathOperation(5, 3, ":)")); // NaN
+
+Функции mathOperation всегда передаются корректные числа, проверки на NaN,
+Infinity делать не нужно, однако, в случае если был передан некорректный
+аргумент в параметр operation, необходимо вернуть NaN.
+
+Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+-->
+	<script>
+		"use strict";
+
+		/**
+ * @function [sumNumbers]
+ * @description функция складывает 2 числа
+ * @param {Number} a первое число, которое будет складываться в функции
+ * @param {Number} b второе число, которое будет складываться в функции
+ * @returns {Number} вернет число - результат сложения двух чисел
+ */
+function sumNumbers(a, b){
+	return a + b;
+}
+
+
+/**
+ * @function [subtractNumbers]
+ * @description функция вычитает одно число из другого, в зависимости от того, 
+ * какое число больше
+ * @param {Number} a первое число, которое будет будет обработано функцией вычитания
+ * @param {Number} b второе число, которое будет будет обработано функцией вычитания
+ * @returns {Number} вернет число - результат вычитания меньшего числа из 
+ * большего или 0, если числа равны
+ */
+function subtractNumbers(a, b) {
+	return (a >= b) ? (a - b) : (b - a); 
+}
+
+
+/**
+ * @function [multiplyNumbers]
+ * @description функция умножает 2 числа
+ * @param {Number} a первое число, которое будет умножаться в функции
+ * @param {Number} b второе число, которое будет умножаться в функции
+ * @returns {Number} вернет число - результат умножения двух чисел
+ */
+function multiplyNumbers(a, b) {
+	return a * b;
+}
+
+/**
+ * @function [divideNumbers]
+ * @description функция делит одно число из другого, в зависимости от того, 
+ * какое число больше
+ * @param {Number} a первое число, которое будет будет обработано функцией деления
+ * @param {Number} b второе число, которое будет будет обработано функцией деления
+ * @returns {Number} вернет число - результат деления большего числа на 
+ * меньшее или 1, если числа равны
+ */
+function divideNumbers(a, b) {
+	return (a >= b) ? (a / b) : (b / a);
+}
+
+
+/**
+ * @function [mathOperation]
+ * @description функция получает 3 аргумента, первые 2 - числа, 3 - оператор, 
+ * показывающий, что с этими числами нужно сделать: сложить || 
+ * вычесть (из большего меньшее по умолчанию) || умножить || 
+ * разделить (большее на меньшее по умолчанию). 
+ * Если оператор задан неверно или такого действия нет, то выведеся значение NaN
+ * @param {Number} arg1 первое число для проведения математической операции
+ * @param {Number} arg2 второе число для проведения математической операции
+ * @param {String} operation оператор, указывающий ЧТО нужно сделать с 2-мя 
+ * числами
+ * @returns возвращает число результат сложения (вычитания, деления или умножения)
+ * в зависимости от выбранного оператора или NaN, если указанный оператор 
+ * не найден или в нем ошибка
+ */
+
+
+function mathOperation(arg1, arg2, operation) {
+	if (operation === '+') {
+		return sumNumbers(arg1, arg2);
+	} else if (operation === '-') {
+		return subtractNumbers(arg1, arg2);
+	} else if (operation === '*') {
+		return multiplyNumbers(arg1, arg2);
+	} else if (operation === '/') {
+		return divideNumbers(arg1, arg2);
+	} else if (!operation) {
+		return NaN;
+	} else {
+		return NaN;
+	}
+}
+
+console.log(mathOperation(4, 13, '-'));
+console.log(mathOperation(2, 3, '**'));	// NaN
+console.log(mathOperation(12, 3, ':)'));  // NaN
+console.log(mathOperation(3, 3, '*'));
+console.log(mathOperation(5, 10, ''));		// NaN
+console.log(mathOperation(3, 7));			// NaN
+
+
+	</script>
+</body>
+
+</html>
