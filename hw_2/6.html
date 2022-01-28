@@ -38,15 +38,8 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
 	 * @returns возвращает число от 0 до 20 включительно 
 	 */
 		function getLastDigitsOfNumber(number) {
-			if (number === 1) {
-				return number;
-			} else if (number >= 2 && number < 5) {
-				return number;
-			} else if (number >= 5 && number <= 20 || number === 0) {
-				return number;
-			} else {
-				return getLastDigitsOfNumber(number % 10);
-			}
+			return (number >= 0 && number <= 20) ? number : 
+									getLastDigitsOfNumber(number % 10);
 		}
 
 		/**
@@ -77,9 +70,9 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
 
 
 		// Число яблок, можно пробовать поставить свое целое, положительное число.
-		const subjectsNumber = 1531;  
+		const subjectsNumber = 1530;  
 		// Получаем от функции одно из слов "яблоко", "яблока" или "яблок".
-		const word = declinationOfNumber(applesNumber, "яблоко", "яблока", "яблок");
+		const word = declinationOfNumber(subjectsNumber, "яблоко", "яблока", "яблок");
 		// Выводим корректную строку, например:
 		// "У меня есть 1 яблоко."
 		// "У меня есть 2 яблока."
