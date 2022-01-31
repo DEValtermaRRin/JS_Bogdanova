@@ -38,9 +38,16 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
 	 * @returns возвращает число от 0 до 20 включительно 
 	 */
 		function getLastDigitsOfNumber(number) {
-			return (number >= 0 && number <= 20) ? number : 
-									getLastDigitsOfNumber(number % 10);
-		}
+			if (number >= 1000) {
+				number = getLastDigitsOfNumber(number % 1000);
+			} else if (number >= 100 && number < 1000) {
+				number = getLastDigitsOfNumber(number % 100);
+			} else if (number > 20 && number < 100) {
+				number = getLastDigitsOfNumber(number % 10);
+			} else if (number >= 0 && number <= 20) {
+				return number;	
+			}	
+		} // ! ВОТ НА ЭТОТ МОМЕНТЕ - UNDEFINED - НЕ ПОНИМАЮ ПОЧЕМУ (((((
 
 		/**
 		 * @function [declinationOfNumber]
@@ -60,6 +67,9 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
 			} else if (getLastDigitsOfNumber(count) >= 2 &&
 				getLastDigitsOfNumber(count) <= 4) {
 				return two;
+			} else if (getLastDigitsOfNumber(count) >= 11 &&
+				getLastDigitsOfNumber(count) <= 20) {
+				return five;
 			} else {
 				return five;
 			}
@@ -70,7 +80,7 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
 
 
 		// Число яблок, можно пробовать поставить свое целое, положительное число.
-		const subjectsNumber = 1530;  
+		const subjectsNumber = 6352;  
 		// Получаем от функции одно из слов "яблоко", "яблока" или "яблок".
 		const word = declinationOfNumber(subjectsNumber, "яблоко", "яблока", "яблок");
 		// Выводим корректную строку, например:
