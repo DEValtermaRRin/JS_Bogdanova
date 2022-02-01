@@ -1,0 +1,9 @@
+{
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "indentRainbow.colorOnWhiteSpaceOnly": true,
+  "indentRainbow.errorColor": "rgba(88, 146, 221, 0.6)",
+  "bemHelper.modifierSeparator": "_",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.renderWhitespace": "all"
+}

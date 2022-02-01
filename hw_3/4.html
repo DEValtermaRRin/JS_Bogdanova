@@ -46,8 +46,8 @@
 			},
 		];
 
-		let productWithPhoto = products.filter((product) => {
-			return (product?.photos?.length > 0) ?  product.photos : 0 ;
+		const productWithPhoto = products.filter((product) => {
+			return product.photos?.length > 0;
 		});
 
 		console.log(productWithPhoto);
