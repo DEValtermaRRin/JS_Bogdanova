@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+<!--
+Обязательное задание.
+
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для поста в социальной сети.
+Названия: `PostES5` для es5 стиля и `PostES6` для es6 стиля.
+Пост должен хранить:
+1. Автора поста (имени достаточно).
+2. Текст поста.
+3. Дату и время последнего изменения поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Каждому экземпляру объекта должен быть доступен метод `edit`, который будет
+менять текст поста.
+
+---
+
+Необходимо создать функцию-конструктор/класс для закрепленного поста в
+социальной сети.
+Названия: `AttachedPostES5` для es5 стиля и `AttachedPostES6` для es6 стиля.
+Закрепленный пост должен наследоваться от обычного поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Закрепленный пост должен иметь свойство `highlighted`, в котором по умолчанию
+будет лежать значение false (это свойство будет обозначать, будет ли наш
+закрепленный пост подсвечен).
+У экземпляров объекта закрепленного поста должен быть метод с названием
+`makeTextHighlighted`, который сделает так, чтобы наш пост стал подсвеченным
+(будет менять свойство `highlighted`).
+
+---
+
+Подсказки:
+1. Задание сложное, советую делать по аналогии с примером на онлайн-занятии.
+2. Обратите внимание что пост хранит "дату и время последнего изменения
+поста", это значит что если пост кто-то изменит (например вызовет какой-то
+метод, который изменит что-то в посте), дата и время последнего изменения
+поста также должна измениться.
+3. Выполняйте все по порядку, не стоит пытаться сделать все сразу, иначе можно
+что-нибудь пропустить.
+4. Если непонятно условие - задайте вопрос.
+-->
+<script>
+  "use strict";
+
+// По стандарту ES5
+
+/* Все имена являются вымышленными и любые совпадения с 
+  реальными персонажами случайны и не несут оскорбительный характер */
+
+// Создаю функцию - конструктор поста
+  function PostES5(author, text) {
+    // Создаю константу фиксации времени написания поста внутри конструктора (?)
+    const timeDate = getTime();
+    this.author = author;
+    this.text = text;
+    this.time = timeDate;
+  }
+/*  Добавляю метод edit для редактирования поста, 
+    в параметр функции вводится новый текст */
+  PostES5.prototype.edit = function (newText) {
+    this.text = newText;
+  }
+// Создаю 1-ый экземпляр объекта
+  const post1 = new PostES5('Timoshka', 'Lorem ipsum dolor sit amet.');
+  console.log(post1);
+// Создаю второй экземпляр объекта
+  const post2 = new PostES5('Igorek',
+    `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+Molestias voluptas atque cupiditate tempore eveniet mollitia!`);
+  console.log(post2);
+// Редактирую второй объект, передаю новый текст
+  post2.edit('Lorem, ipsum dolor.');
+  console.log(post2);
+
+// Создаю функцию - конструктор закрепленного поста без подсветки
+  function AttachedPostES5(author, text) {
+    PostES5.call(this, author, text);
+    this.highlighted = false;
+  }
+// Обозначаю наследование из обычного поста
+  AttachedPostES5.prototype = Object.create(PostES5.prototype);
+// Возвращаю исходный конструктор
+  AttachedPostES5.prototype.constructor = AttachedPostES5;
+// Добавляю метод makeTextHighlighted - подсветка
+  AttachedPostES5.prototype.makeTextHighlighted = function () {
+    this.highlighted = true;
+  }
+// Создаю первый экземпляр закрепленного поста
+  const mainPost = new AttachedPostES5('Matreshka',
+    `Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+Deleniti distinctio velit cupiditate autem ducimus quibusdam consectetur 
+aspernatur, soluta sint molestiae?`);
+  console.log(mainPost);
+// Подсвечиваю его
+  mainPost.makeTextHighlighted();
+  console.log(mainPost);
+
+// По стандарту ES6
+
+// не знаю как тут комментировать)) вродь все понятно
+  class PostES6 {
+    constructor(author, text) {
+      const timeDate = getTime();
+      this.author = author;
+      this.text = text;
+      this.time = timeDate;
+    }
+    edit(newText) {
+      this.text = newText;
+    }
+  }
+
+  class AttachedPostES6 extends PostES6 {
+    constructor(author, text) {
+      super(author, text);
+      this.highlighted = false;
+    }
+    makeTextHighlighted() {
+      this.highlighted = true;
+    }
+  }
+// Создаю 2 экземпляра поста и 1 - закрепленный
+  const post3 = new PostES6('Marinka', `Lorem ipsum dolor sit amet consectetur \
+adipisicing elit. Porro, repellat?`);
+  const post4 = new PostES6('Vitaminka', `Lorem ipsum dolor sit.`);
+  const mainPost2 = new AttachedPostES6('Askorbinka', `Lorem ipsum, dolor sit \
+amet consectetur adipisicing elit. Soluta!`);
+
+  // Вывожу в консоль
+  console.log(post3);
+  console.log(post4);
+  console.log(mainPost2);
+
+  // Редактирую post4
+  post4.edit('Какой-то исправленный текст');
+  // Подсвечиваю второй закрепленный пост
+  mainPost2.makeTextHighlighted();
+  // Вывожу 2 изменных поста
+  console.log(post4);
+  console.log(mainPost2);
+
+  // Функция преобразования даты в читабельный текст  
+  function getTime() {
+    const data = new Date();
+    const day = data.getDate();
+    const month = data.getMonth();
+    const year = data.getFullYear();
+    const hour = data.getHours();
+    const min = data.getMinutes();
+    const sec = data.getSeconds();
+    return `Дата: \
+${('00' + day).slice(-2)}.${('00' + (month + 1)).slice(-2)}.${year} \
+(${('00' + hour).slice(-2)}:${('00' + min).slice(-2)}:${('00' + sec).slice(-2)})`;
+  }
+</script>
+</body>
+</html>
