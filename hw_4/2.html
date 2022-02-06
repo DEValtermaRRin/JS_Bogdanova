@@ -66,6 +66,7 @@
 /*  Добавляю метод edit для редактирования поста, 
     в параметр функции вводится новый текст */
   PostES5.prototype.edit = function (newText) {
+		this.time = timeDate;
     this.text = newText;
   }
 // Создаю 1-ый экземпляр объекта
@@ -112,16 +113,18 @@ aspernatur, soluta sint molestiae?`);
       this.author = author;
       this.text = text;
       this.time = timeDate;
+			this.highlighted = false;
     }
     edit(newText) {
       this.text = newText;
+			this.time = timeDate;
     }
   }
 
   class AttachedPostES6 extends PostES6 {
     constructor(author, text) {
       super(author, text);
-      this.highlighted = false;
+      
     }
     makeTextHighlighted() {
       this.highlighted = true;
