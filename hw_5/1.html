@@ -53,8 +53,8 @@
     3. Найти все элементы на странице с классом "card-link", которые лежат в
     элементе с классом "card-body" и вывести полученную коллекцию в консоль.
      */
-    const bodyElement = document.querySelector('.card-body');
-    const cardsBodyElement = bodyElement.querySelectorAll('.card-link');
+    
+    const cardsBodyElement = document.querySelectorAll('.card-body .card-link');
     console.log(cardsBodyElement);
 
     /*
@@ -69,15 +69,15 @@
     5. Выведите содержимое тега title в консоль.
      */
     // тега title нет, сделаю для тега <h5>...</h5>, у которого класс card-title
-    const elementTitleH5 = document.querySelector('h5');
-    console.log(elementTitleH5.innerHTML);
+    const elementTitle = document.title;
+    console.log(elementTitle.innerHTML);
 
     /*
     6. Получите элемент с классом "card-title" и выведите его родительский узел
     в консоль.
      */
     // константа из пункта 5
-    console.log(elementTitleH5.parentNode);
+    console.log(elementTitle.parentNode);
 
     /*
     7. Создайте тег `p`, запишите внутри него текст "Привет" и добавьте созданный
