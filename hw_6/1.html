@@ -66,7 +66,7 @@
         return;
       }
       event.target.textContent = 'Добавлено';
-      event.target.setAttribute('disabled', 'true');
+      event.target.disabled = true;
     });
 
 
@@ -81,7 +81,7 @@
     const newElProduct = document.querySelector('.product').cloneNode(true);
     newElProduct.querySelector('.productName').textContent = 'Товар 4';
     newElProduct.querySelector('img')
-      .setAttribute('src', 'https://picsum.photos/id/1080/200/300');
+      .src = 'https://picsum.photos/id/1080/200/300';
     
     document.querySelector('.product:last-of-type').replaceWith(newElProduct);
 
