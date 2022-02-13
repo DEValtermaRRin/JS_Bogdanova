@@ -68,9 +68,9 @@
     должно моментально отображаться в span. То есть при печати в input'е тег span
     также должен меняться.
     */
-
+    const elemSpan = document.querySelector('span');
     document.querySelector('#from').addEventListener('input', event => {
-      document.querySelector('span').textContent = event.target.value;
+      elemSpan.textContent = event.target.value;
     });
 
     /*
@@ -81,8 +81,7 @@
      */
     const elemMessage = document.querySelector('.message');
     document.querySelector('.messageBtn').addEventListener('click', event => {
-      elemMessage.classList.add('animate__animated');
-      elemMessage.classList.add('animate__fadeInLeftBig');
+      elemMessage.classList.add('animate__animated', 'animate__fadeInLeftBig');
       elemMessage.style.visibility = 'visible';
     });
 
@@ -112,7 +111,7 @@
       elem.addEventListener('input', event => {
         !event.target.value
           ? elem.classList.add('error')
-          : elem.classList.remove('error')
+          : elem.classList.remove('error');
       });
     });
 
