@@ -27,10 +27,10 @@
      * параметр "n"
      */
     function descendingOrder(n) {
-      // return parseInt((Array.from(String(n)).sort((a, b) => a - b).reverse()).join(''));
-      // return parseInt((Array.from(String(n)).sort((a, b) => b - a)).join(''));
-      return parseInt((Array.from(String(n)).sort().reverse()).join(''));
-    }
+      // return Number.parseInt((Array.from(String(n)).sort((a, b) => a - b).reverse()).join(''));
+      return Number.parseInt((Array.from(String(n)).sort((a, b) => b - a)).join(''));
+      // return Number.parseInt((Array.from(String(n)).sort().reverse()).join(''));
+     }
 
 
     console.log(descendingOrder(42145)); // 54421
